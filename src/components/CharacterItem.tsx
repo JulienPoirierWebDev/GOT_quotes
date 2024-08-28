@@ -32,7 +32,9 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
 					{character.house?.name || 'No house attached'}
 				</IonLabel>
 			</IonItem>
-			<IonButton slot='end'>Voir le détail</IonButton>
+			<IonButton slot='end' routerLink={`/details/${character.slug}`}>
+				Voir le détail
+			</IonButton>
 		</IonItem>
 	);
 };
