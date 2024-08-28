@@ -1,0 +1,7 @@
+{
+  "name": "GOT_quotes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
