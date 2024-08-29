@@ -52,10 +52,14 @@ const Details: React.FC = () => {
 			</IonHeader>
 			<IonContent className='ion-padding'>
 				{loading && <p>Chargement =D</p>}
-				{character &&
-					character.quotes.map((quote) => {
-						return <p key={quote}>{quote}</p>;
-					})}
+				{character && (
+					<>
+						<IonTitle>{character.name}</IonTitle>
+						{character.quotes.map((quote) => {
+							return <p key={quote}>{quote}</p>;
+						})}
+					</>
+				)}
 			</IonContent>
 		</IonPage>
 	);
