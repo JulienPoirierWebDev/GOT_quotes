@@ -60,7 +60,17 @@ const Details: React.FC = () => {
 							{character.house?.name || 'No house attached'}
 						</IonLabel>
 						{character.quotes.map((quote) => {
-							return <p key={quote}>{quote}</p>;
+							return (
+								<IonItem
+									style={{
+										borderBottom: '5px solid red',
+										marginBottom: '10px',
+									}}
+									key={quote}
+								>
+									{quote}
+								</IonItem>
+							);
 						})}
 					</>
 				)}
