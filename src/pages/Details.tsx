@@ -4,6 +4,7 @@ import {
 	IonContent,
 	IonHeader,
 	IonItem,
+	IonLabel,
 	IonLoading,
 	IonPage,
 	IonTitle,
@@ -18,12 +19,12 @@ const Details: React.FC = () => {
 	const [character, setCharacter] = useState<Character | null>(null);
 	const [loading, setLoading] = useState(true);
 
-	const params: { slug: string } = useParams();
+	const { slug } = useParams() as { slug: string };
 	useIonViewDidEnter(() => {
 		const getData = async () => {
 			try {
 				const request = await fetch(
-					`https://api.gameofthronesquotes.xyz/v1/character/${params.slug}`
+					`https://api.gameofthronesquotes.xyz/v1/character/${slug}`
 				);
 
 				const data = await request.json();
@@ -55,9 +56,9 @@ const Details: React.FC = () => {
 				{character && (
 					<>
 						<IonTitle>{character.name}</IonTitle>
-						<IonTitle size='small'>
+						<IonLabel>
 							{character.house?.name || 'No house attached'}
-						</IonTitle>
+						</IonLabel>
 						{character.quotes.map((quote) => {
 							return <p key={quote}>{quote}</p>;
 						})}
