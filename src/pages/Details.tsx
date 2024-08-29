@@ -55,6 +55,9 @@ const Details: React.FC = () => {
 				{character && (
 					<>
 						<IonTitle>{character.name}</IonTitle>
+						<IonTitle size='small'>
+							{character.house?.name || 'No house attached'}
+						</IonTitle>
 						{character.quotes.map((quote) => {
 							return <p key={quote}>{quote}</p>;
 						})}
