@@ -8,7 +8,9 @@ import {
 	IonPage,
 	IonSelect,
 	IonSelectOption,
+	IonSkeletonText,
 	IonText,
+	IonThumbnail,
 	IonTitle,
 	IonToolbar,
 	SelectChangeEventDetail,
@@ -19,11 +21,13 @@ import { useState } from 'react';
 import CharacterItem from '../components/CharacterItem';
 import Character from '../types/Character';
 import { IonSelectCustomEvent } from '@ionic/core';
+import CharacterItemSkeletton from '../components/CharacterItemSkeletton';
 
 const Home: React.FC = () => {
 	const [characters, setCharacters] = useState([]);
 	const [filteredCharacters, setFilteredCharacters] = useState([]);
 	const [selectedFilter, setSelectedFilter] = useState('All');
+	const [loading, setLoading] = useState(true);
 
 	const handleSelectHouse = (
 		e: IonSelectCustomEvent<SelectChangeEventDetail>
@@ -57,8 +61,11 @@ const Home: React.FC = () => {
 
 				const data = await request.json();
 
-				setCharacters(data);
-				setFilteredCharacters(data);
+				setTimeout(() => {
+					setCharacters(data);
+					setFilteredCharacters(data);
+					setLoading(false);
+				}, 2000);
 			} catch (error) {
 				console.log(error, 'Oups, prb pdt la récup des characters');
 			}
@@ -118,7 +125,8 @@ const Home: React.FC = () => {
 					</IonSelect>
 				</IonItem>
 				<IonList>
-					{filteredCharacters.length > 0 &&
+					{!loading &&
+						filteredCharacters.length > 0 &&
 						filteredCharacters.map((character: Character) => {
 							return (
 								<CharacterItem
@@ -127,6 +135,24 @@ const Home: React.FC = () => {
 								/>
 							);
 						})}
+
+					{
+						//loading && new Array(10).fill(<CharacterItemSkeletton />)
+					}
+					{loading && (
+						<>
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+							<CharacterItemSkeletton />
+						</>
+					)}
 				</IonList>
 			</IonContent>
 		</IonPage>
