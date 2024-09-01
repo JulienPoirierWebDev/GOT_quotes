@@ -48,45 +48,49 @@ import Topics from './pages/Topics';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-	<IonApp>
-		<IonReactRouter>
-			<IonTabs>
-				<IonRouterOutlet>
-					<Route exact path='/home'>
-						<Home />
-					</Route>
-					<Route exact path='/details/:slug'>
-						<Details />
-					</Route>
-					<Route exact path='/users'>
-						<Users />
-					</Route>
-					<Route>
-						<Redirect to='/home' />
-					</Route>
-					<Route path={'/topics'}>
-						<Topics />
-					</Route>
-					<Route path={'/contracts'}>Ce sont les contracts</Route>
-				</IonRouterOutlet>
-				<IonTabBar slot='bottom'>
-					<IonTabButton tab='home' href='/home'>
-						<IonLabel>Home</IonLabel>
-						<IonIcon icon={home} />
-					</IonTabButton>
-					<IonTabButton tab='details/jon' href='/details/jon'>
-						<IonLabel>Go Jon !</IonLabel>
-						<IonIcon icon={snow} />
-					</IonTabButton>
-					<IonTabButton tab='users' href='/users'>
-						<IonLabel>Users</IonLabel>
-						<IonIcon icon={people} />
-					</IonTabButton>
-				</IonTabBar>
-			</IonTabs>
-		</IonReactRouter>
-	</IonApp>
-);
+const App: React.FC = () => {
+
+	const myData =
+	return (
+		<IonApp>
+			<IonReactRouter>
+				<IonTabs>
+					<IonRouterOutlet>
+						<Route exact path='/home'>
+							<Home />
+						</Route>
+						<Route exact path='/details/:slug'>
+							<Details />
+						</Route>
+						<Route exact path='/users'>
+							<Users />
+						</Route>
+						<Route>
+							<Redirect to='/home' />
+						</Route>
+						<Route path={'/topics'}>
+							<Topics />
+						</Route>
+						<Route path={'/contracts'}>Ce sont les contracts</Route>
+					</IonRouterOutlet>
+					<IonTabBar slot='bottom'>
+						<IonTabButton tab='home' href='/home'>
+							<IonLabel>Home</IonLabel>
+							<IonIcon icon={home} />
+						</IonTabButton>
+						<IonTabButton tab='details/jon' href='/details/jon'>
+							<IonLabel>Go Jon !</IonLabel>
+							<IonIcon icon={snow} />
+						</IonTabButton>
+						<IonTabButton tab='users' href='/users'>
+							<IonLabel>Users</IonLabel>
+							<IonIcon icon={people} />
+						</IonTabButton>
+					</IonTabBar>
+				</IonTabs>
+			</IonReactRouter>
+		</IonApp>
+	);
+};
 
 export default App;

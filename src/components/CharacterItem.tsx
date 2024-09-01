@@ -1,4 +1,10 @@
-import { IonButton, IonItem, IonLabel, IonThumbnail } from '@ionic/react';
+import {
+	IonButton,
+	IonImg,
+	IonItem,
+	IonLabel,
+	IonThumbnail,
+} from '@ionic/react';
 import Character from '../types/Character';
 import blasons from '../assets/blason';
 
@@ -22,7 +28,7 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
 			<IonItem slot='start' style={{ minWidth: '300px', width: '30%' }}>
 				<IonThumbnail slot='end'>
 					{slugImage ? (
-						<img
+						<IonImg
 							src={blasons[slugImage]} // blasons.House_Baratheon_of_Dragonstone   || 		'https://www.lagardedenuit.com/wiki/images/a/a5/Blason-baratheon-2014-v01-256px.png',
 							alt='bla'
 						/>
@@ -30,7 +36,7 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
 						<img src={blasons.No_house_attached} alt='end' />
 					)}
 				</IonThumbnail>
-				<IonLabel >
+				<IonLabel>
 					{character.house?.name || 'No house attached'}
 				</IonLabel>
 			</IonItem>

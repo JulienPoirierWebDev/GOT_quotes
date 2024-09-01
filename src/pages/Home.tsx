@@ -1,4 +1,5 @@
 import {
+	IonAvatar,
 	IonButton,
 	IonContent,
 	IonHeader,
@@ -74,88 +75,101 @@ const Home: React.FC = () => {
 		getData();
 	});
 	return (
-		<IonPage>
-			<IonHeader translucent={true}>
-				<IonToolbar>
-					<IonTitle slot='start'>GOT Quotes</IonTitle>
-				</IonToolbar>
-			</IonHeader>
-			<IonContent>
-				<IonItem>
-					<IonSelect
-						placeholder='Select a House'
-						value={selectedFilter}
-						onIonChange={handleSelectHouse}
-					>
-						<div slot='label'>House</div>
-						<IonSelectOption value='All'>
-							All houses
-						</IonSelectOption>
-						<IonSelectOption value='House Stark of Winterfell'>
-							House Stark of Winterfell
-						</IonSelectOption>
-						<IonSelectOption value='House Lannister of Casterly Rock'>
-							House Lannister of Casterly Rock
-						</IonSelectOption>
-						<IonSelectOption value='House Baratheon of Dragonstone'>
-							House Baratheon of Dragonstone
-						</IonSelectOption>
-						<IonSelectOption
-							value={`House Targaryen of King's Landing`}
+		<>
+			<IonPage>
+				<IonHeader translucent={true}>
+					<IonToolbar>
+						<IonTitle slot='start'>GOT Quotes</IonTitle>
+					</IonToolbar>
+				</IonHeader>
+				<IonContent>
+					<IonItem>
+						<IonSelect
+							placeholder='Select a House'
+							value={selectedFilter}
+							onIonChange={handleSelectHouse}
 						>
-							House Targaryen of King's Landing
-						</IonSelectOption>
-						<IonSelectOption
-							value={`House Bolton of the Dreadfort`}
-						>
-							House Bolton of the Dreadfort
-						</IonSelectOption>
-						<IonSelectOption value={`House Greyjoy of Pyke`}>
-							House Greyjoy of Pyke
-						</IonSelectOption>
-						<IonSelectOption value={`No house attached`}>
-							No house attached
-						</IonSelectOption>
-						<IonSelectOption value={`House Tarly of Horn Hill`}>
-							House Tarly of Horn Hill
-						</IonSelectOption>
-						<IonSelectOption value={`House Tarth of Evenfall Hall`}>
-							House Tarth of Evenfall Hall
-						</IonSelectOption>
-					</IonSelect>
-				</IonItem>
-				<IonList>
-					{!loading &&
-						filteredCharacters.length > 0 &&
-						filteredCharacters.map((character: Character) => {
-							return (
-								<CharacterItem
-									key={character.slug}
-									character={character}
-								/>
-							);
-						})}
+							<div slot='label'>House</div>
+							<IonSelectOption value='All'>
+								All houses
+							</IonSelectOption>
+							<IonSelectOption value='House Stark of Winterfell'>
+								House Stark of Winterfell
+							</IonSelectOption>
+							<IonSelectOption value='House Lannister of Casterly Rock'>
+								House Lannister of Casterly Rock
+							</IonSelectOption>
+							<IonSelectOption value='House Baratheon of Dragonstone'>
+								House Baratheon of Dragonstone
+							</IonSelectOption>
+							<IonSelectOption
+								value={`House Targaryen of King's Landing`}
+							>
+								House Targaryen of King's Landing
+							</IonSelectOption>
+							<IonSelectOption
+								value={`House Bolton of the Dreadfort`}
+							>
+								House Bolton of the Dreadfort
+							</IonSelectOption>
+							<IonSelectOption value={`House Greyjoy of Pyke`}>
+								House Greyjoy of Pyke
+							</IonSelectOption>
+							<IonSelectOption value={`No house attached`}>
+								No house attached
+							</IonSelectOption>
+							<IonSelectOption value={`House Tarly of Horn Hill`}>
+								House Tarly of Horn Hill
+							</IonSelectOption>
+							<IonSelectOption
+								value={`House Tarth of Evenfall Hall`}
+							>
+								House Tarth of Evenfall Hall
+							</IonSelectOption>
+						</IonSelect>
+					</IonItem>
+					<IonItem>
+						<IonAvatar aria-hidden='true' slot='start'>
+							<img
+								alt=''
+								src='https://ionicframework.com/docs/img/demos/avatar.svg'
+							/>
+						</IonAvatar>
+						<IonLabel>Huey</IonLabel>
+					</IonItem>
+					<IonList>
+						{!loading &&
+							filteredCharacters.length > 0 &&
+							filteredCharacters.map((character: Character) => {
+								return (
+									<CharacterItem
+										key={character.slug}
+										character={character}
+									/>
+								);
+							})}
 
-					{
-						//loading && new Array(10).fill(<CharacterItemSkeletton />)
-					}
-					{loading && (
-						<>
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-							<CharacterItemSkeletton />
-						</>
-					)}
-				</IonList>
-			</IonContent>
-		</IonPage>
+						{
+							//loading && new Array(10).fill(<CharacterItemSkeletton />)
+						}
+						{loading && (
+							<>
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+								<CharacterItemSkeletton />
+							</>
+						)}
+					</IonList>
+				</IonContent>
+			</IonPage>
+		</>
 	);
 };
 
